@@ -17,12 +17,18 @@ These challenges underscore the importance and value of Aspect-Based Sentiment A
 However, our main problem statement goes beyond sentiment analysis—it focuses on automating the process of generating labeled datasets from such unstructured domains. 
 Since manually labeling aspect-sentiment pairs is costly, we aim to address this by building a system that can automatically extract aspects and determine sentiments using a simple yet efficient model architecture that balances performance and practicality.
 
-# Methodology
+# Methodology for Sentiment Prediction
 To tackle the problem of aspect extraction, we use SpaCy—a fast and lightweight NLP library for automating aspect extraction. 
 SpaCy offers efficient and customizable pipelines for entity and pattern recognition, making it well-suited for domain-specific tasks like aspect identification. 
 For sentiment analysis, we employ a BERT model with multi-head attention, which allows the system to capture nuanced contextual sentiment related to each extracted aspect. 
 Given that our dataset is largely unlabeled, we incorporate a semi-supervised learning approach using an active learning framework. 
 This approach allows the model to iteratively select the most samples from the data for human annotation, significantly reducing labeling effort while improving model accuracy.
+
+# Time Series Forecasting
+To add predictive capabilities, we extend our analysis to include time series forecasting of aspect-level sentiment ratios.  
+After identifying the most frequently occurring aspect from truly unseen customer reviews, we sampled four months of historical sentiment data for that aspect.  
+Using a rolling forecast strategy, we trained a Long Short-Term Memory (LSTM) model enhanced with quantile regression to predict sentiment trends for April, using January through March as test input.  
+The forecasting was done separately for positive, neutral, and negative sentiment ratios.
 
 # Goals
 * Automatically extract product aspects from unstructured customer reviews.
